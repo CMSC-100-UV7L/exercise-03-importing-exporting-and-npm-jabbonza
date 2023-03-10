@@ -8,3 +8,5 @@ function generateUniqueID(firstName, lastName) {
     const uniqueString = uuidv4().slice(0, 8);
     return `${firstInitial}${lastNameLower}${uniqueString}`;
 }
+
+module.exports = { generateUniqueID};
