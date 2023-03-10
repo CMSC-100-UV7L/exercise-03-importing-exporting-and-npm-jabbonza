@@ -4,10 +4,10 @@ const validator = require('validator');
 
 function generateUniqueID(firstName, lastName) {
     if (!firstName || !lastName) {
-        console.log('One or more fields are missing');
+        return('One or more fields are missing');
     }
     else if (firstName == " "|| lastName == " ") {
-        console.log('One or more fields are empty strings');
+        return('One or more fields are empty strings');
     }
     else{
         const firstInitial = firstName[0].toLowerCase();
@@ -20,15 +20,19 @@ function generateUniqueID(firstName, lastName) {
 function addAccount([firstName, lastName, email, age]) {
     if (!firstName || !lastName || !email || !age) {
         console.log('One or more fields are missing');
+        return false;
     }
-    else if (firstName === '' || lastName === '' || email === '') {
+    else if (firstName == " " || lastName == " " || email == " ") {
         console.log('One or more fields are empty strings');
+        return false;
     }
     else if (!validator.isEmail(email)) {
         console.log('Email is in an invalid format');
+        return false;
     }
     else if (age < 18) {
         console.log('Age is below 18');
+        return false;
     } else {
         const uniqueID = generateUniqueID(firstName, lastName);
         const data = `${firstName},${lastName},${email},${age},${uniqueID}\n`;
