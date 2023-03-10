@@ -1,4 +1,4 @@
-const { generateUniqueID, addAccount } = require('./function');
+const {generateUniqueID, addAccount} = require('./function');
 
 console.log(generateUniqueID("Alan", "Turing"));
 console.log(generateUniqueID("Tim", "Berners-Lee"));

@@ -1,21 +1,37 @@
 const fs = require('fs');
-const {v4: uuidv4} = require('uuid');
+const { v4: uuidv4 } = require('uuid');
 const validator = require('validator');
 
 function generateUniqueID(firstName, lastName) {
-    const firstInitial = firstName[0].toLowerCase();
-    const lastNameLower = lastName.toLowerCase();
-    const uniqueString = uuidv4().slice(0, 8);
-    return `${firstInitial}${lastNameLower}${uniqueString}`;
+    if (!firstName || !lastName) {
+        console.log('One or more fields are missing');
+    }
+    else if (firstName == " "|| lastName == " ") {
+        console.log('One or more fields are empty strings');
+    }
+        const firstInitial = firstName[0].toLowerCase();
+        const lastNameLower = lastName.toLowerCase();
+        const uniqueString = uuidv4().slice(0, 8);
+        console.log `${firstInitial}${lastNameLower}${uniqueString}`;
 }
 
 function addAccount([firstName, lastName, email, age]) {
-    if (firstName && lastName && email && age >= 18 && validator.isEmail(email)){
+    if (!firstName || !lastName || !email || !age) {
+        console.log('One or more fields are missing');
+    }
+    else if (firstName === '' || lastName === '' || email === '') {
+        console.log('One or more fields are empty strings');
+    }
+    else if (!validator.isEmail(email)) {
+        console.log('Email is in an invalid format');
+    }
+    else if (age < 18) {
+        console.log('Age is below 18');
+    }
         const uniqueID = generateUniqueID(firstName, lastName);
         const data = `${firstName},${lastName},${email},${age},${uniqueID}\n`;
         fs.appendFileSync('users.txt', data);
         return true;
-    } else return false;
 }
 
-module.exports = {generateUniqueID, addAccount};
+module.exports = { generateUniqueID, addAccount };
