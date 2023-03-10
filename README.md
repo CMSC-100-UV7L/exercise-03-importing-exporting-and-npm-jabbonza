@@ -1,6 +1,6 @@
-#BONZA, Jhorge Anne B.
-#2021-12950
-#CMSC100 UV-7L
+## BONZA, Jhorge Anne B.
+## 2021-12950
+## CMSC100 UV-7L
 
 Lab Exercise 3 (10 pts)
 
