@@ -12,7 +12,7 @@ function generateUniqueID(firstName, lastName) {
         const firstInitial = firstName[0].toLowerCase();
         const lastNameLower = lastName.toLowerCase();
         const uniqueString = uuidv4().slice(0, 8);
-        console.log `${firstInitial}${lastNameLower}${uniqueString}`;
+        return `${firstInitial}${lastNameLower}${uniqueString}`;
 }
 
 function addAccount([firstName, lastName, email, age]) {
