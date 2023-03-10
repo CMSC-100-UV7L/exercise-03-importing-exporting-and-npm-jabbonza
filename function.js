@@ -9,10 +9,12 @@ function generateUniqueID(firstName, lastName) {
     else if (firstName == " "|| lastName == " ") {
         console.log('One or more fields are empty strings');
     }
+    else{
         const firstInitial = firstName[0].toLowerCase();
         const lastNameLower = lastName.toLowerCase();
         const uniqueString = uuidv4().slice(0, 8);
         return `${firstInitial}${lastNameLower}${uniqueString}`;
+    }
 }
 
 function addAccount([firstName, lastName, email, age]) {
@@ -27,11 +29,12 @@ function addAccount([firstName, lastName, email, age]) {
     }
     else if (age < 18) {
         console.log('Age is below 18');
-    }
+    } else {
         const uniqueID = generateUniqueID(firstName, lastName);
         const data = `${firstName},${lastName},${email},${age},${uniqueID}\n`;
         fs.appendFileSync('users.txt', data);
         return true;
+    }
 }
 
 module.exports = { generateUniqueID, addAccount };
